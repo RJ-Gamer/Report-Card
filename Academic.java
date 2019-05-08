@@ -8,7 +8,7 @@ class Academic{
     String[][] info;
     float[][] termone;
     float[][] termtwo;
-    String[][] cum;
+    float[][] cum;
     String academicyr;
 
     Scanner in = new Scanner(System.in);
@@ -187,10 +187,33 @@ class Academic{
         }
     }
 
+    public void cummulative(){
+        cum = new float[this.n][9];
+        for(int i = 0; i < cum.length; i++){
+            cum[i][0] = (termone[i][2] + termtwo[i][2])/2;
+            cum[i][1] = (termone[i][3] + termtwo[i][3])/2;
+            cum[i][2] = (termone[i][4] + termtwo[i][4])/2;
+            cum[i][3] = (termone[i][7] + termtwo[i][7])/2;
+            cum[i][4] = (termone[i][11] + termtwo[i][11])/2;
+            cum[i][5] = (termone[i][12] + termtwo[i][12])/2;
+            cum[i][6] = (termone[i][13] + termtwo[i][13])/2;
+            cum[i][7] = (termone[i][14] + termtwo[i][14])/2;
+            cum[i][8] = 1;
+        }
+    }
     public void showtermone(){
         for(int i=0;i<this.termone.length;i++){
             for(int j=0;j < this.termone[0].length;j++){
                 System.out.print(this.termone[i][j]+"\t");
+            }
+            System.out.println();
+        }
+    }
+
+    public void showcumm(){
+        for (int i=0; i< cum.length; i++){
+            for(int j=0; j < cum[0].length;j++){
+                System.out.print(cum[i][j] + "\t");
             }
             System.out.println();
         }

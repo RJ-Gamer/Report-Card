@@ -6,7 +6,9 @@ class Object{
         obj.input();
         obj.termone();
         obj.termtwo();
+        obj.cummulative();
         obj.showinfo();
         obj.showtermone();
+        obj.showcumm();
     }
 }
