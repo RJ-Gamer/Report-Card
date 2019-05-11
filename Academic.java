@@ -44,6 +44,14 @@ class Academic{
         this.academicyr = in.nextLine();
     }
 
+    public void validmarks(float marks){
+        if(marks > 0 && marks <= 100){
+            System.out.println("You Entered : " + marks);
+        }
+        else{
+            System.out.println("Marks must be between 1 and 100. Try Again !!");
+        }
+    }
     public void showinfo(){
         System.out.println("Roll No"+"\t"+"Student Name :"+"\t"+"Computer Code");
         System.out.println("=======================================================================");
@@ -62,10 +70,13 @@ class Academic{
             System.out.println("Enter marks for English Language :");
             this.termone[i][0] = in.nextInt();
             in.nextLine();
+            this.validmarks(this.termone[i][0]);
+
 
             System.out.println("Enter marks for English Literature :");
             this.termone[i][1] = in.nextInt();
             in.nextLine();
+            this.validmarks(this.termone[i][1]);
 
             this.termone[i][2] = ((this.termone[i][0] + this.termone[i][1])/2);
             float english  = this.termone[i][2];
