@@ -7,6 +7,7 @@ class Objects{
         obj.termtwo();
         obj.showtermmarks(obj.firstterm);
         obj.showtermmarks(obj.secondterm);
-
+        obj.cummulative();
+        obj.showcumm();
     }
 }
