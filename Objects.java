@@ -9,5 +9,6 @@ class Objects{
         obj.showtermmarks(obj.secondterm);
         obj.cummulative();
         obj.showcumm();
+        obj.printavg(obj.firstterm, 14);
     }
 }

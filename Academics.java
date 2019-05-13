@@ -211,10 +211,10 @@ class Academics{
         }
     }
 
-    public int computerank(float[][] marks, int col){
-
+    public void printavg(float[][] marks, int col){
         for(int i = 0; i < marks.length; i++){
-
+            System.out.println(marks[i][col]);
         }
+        System.out.println();
     }
 }
