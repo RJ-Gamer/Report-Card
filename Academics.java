@@ -210,4 +210,11 @@ class Academics{
             System.out.println("----------------------------------------");
         }
     }
+
+    public int computerank(float[][] marks, int col){
+
+        for(int i = 0; i < marks.length; i++){
+
+        }
+    }
 }
