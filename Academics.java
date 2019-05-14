@@ -10,7 +10,9 @@ class Academics{
     float [][] firstterm;
     float [][] secondterm;
     float [][] cum;
-
+    String [] subjects = {"Eng. Literature", "Eng. Language", "English",
+                        "Hindi", "Maths", "History & Civics", "Geography", "social Studies",
+                        "Physics", "Chemistry", "Biology", "science", "Computer"}
     Scanner in = new Scanner(System.in);
 
     public void input(){
@@ -200,26 +202,34 @@ class Academics{
             cum[i][8] = (i+1);
         }
     }
+    //
+    // public void showcumm(){
+    //     for(int i = 0; i < cum.length; i++){
+    //         System.out.println("Showing Final Results for :" + info[i][1]);
+    //         for (int j = 0;j < cum[0].length; j++) {
+    //             System.out.println(cum[i][j]);
+    //         }
+    //         System.out.println("----------------------------------------");
+    //     }
+    // }
 
-    public void showcumm(){
-        for(int i = 0; i < cum.length; i++){
-            System.out.println("Showing Final Results for :" + info[i][1]);
-            for (int j = 0;j < cum[0].length; j++) {
-                System.out.println(cum[i][j]);
-            }
-            System.out.println("----------------------------------------");
-        }
-    }
-
-    public void printavg(float[][] marks, int col){
+    public void sortbycol(float[][] marks, int col){
         for(int i = 0; i < marks.length; i++){
             for(int j = 1; j < marks.length; j++){
-                if(marks[j-1][col] > marks[j][col]){
+                if(marks[j-1][col] < marks[j][col]){
                     float [] temp = marks[j-1];
                     marks[j-1] = marks[j];
                     marks[j] = temp;
                 }
             }
+        }
+    }
+
+    public void assignrank(float[][] marks, int col){
+        int rank = 1;
+        for(int i = 0; i < marks.length; i++){
+            marks[i][col] = rank;
+            rank = rank + 1;
         }
     }
 }
