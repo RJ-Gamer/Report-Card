@@ -213,8 +213,13 @@ class Academics{
 
     public void printavg(float[][] marks, int col){
         for(int i = 0; i < marks.length; i++){
-            System.out.println(marks[i][col]);
+            for(int j = 1; j < marks.length; j++){
+                if(marks[j-1][col] > marks[j][col]){
+                    float [] temp = marks[j-1];
+                    marks[j-1] = marks[j];
+                    marks[j] = temp;
+                }
+            }
         }
-        System.out.println();
     }
 }
