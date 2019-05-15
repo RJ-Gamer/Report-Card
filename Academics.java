@@ -12,7 +12,7 @@ class Academics{
     float [][] cum;
     String [] subjects = {"Eng. Literature", "Eng. Language", "English",
                         "Hindi", "Maths", "History & Civics", "Geography", "social Studies",
-                        "Physics", "Chemistry", "Biology", "science", "Computer"}
+                        "Physics", "Chemistry", "Biology", "science", "Computer"};
     Scanner in = new Scanner(System.in);
 
     public void input(){
@@ -50,16 +50,13 @@ class Academics{
     }
 
     public void showinfo(){
-        System.out.println("Roll Number:" + "\t" + "Student's Name :" + "\t" + "Computer Code :");
-        for(int i=0; i < info.length; i++){
-            for(int j=0; j < info[0].length; j++){
+        System.out.println("Roll No:" + "\t" + "Student Name:" + "\t" + "Computer Code:");
+        for (int i = 0;i < info.length; i++) {
+            for(int j = 0; j< info[0].length; j++){
                 System.out.print(info[i][j] + "\t");
             }
             System.out.println();
         }
-        System.out.println("Standard :" + std +" " + sec);
-        System.out.println("Class Teacher :" + teacher);
-        System.out.println("Academic Year :" + academicyr);
     }
 
     public float getmarks(){
@@ -202,16 +199,6 @@ class Academics{
             cum[i][8] = (i+1);
         }
     }
-    //
-    // public void showcumm(){
-    //     for(int i = 0; i < cum.length; i++){
-    //         System.out.println("Showing Final Results for :" + info[i][1]);
-    //         for (int j = 0;j < cum[0].length; j++) {
-    //             System.out.println(cum[i][j]);
-    //         }
-    //         System.out.println("----------------------------------------");
-    //     }
-    // }
 
     public void sortbycol(float[][] marks, int col){
         for(int i = 0; i < marks.length; i++){
@@ -231,5 +218,5 @@ class Academics{
             marks[i][col] = rank;
             rank = rank + 1;
         }
-    }
+    }    
 }
