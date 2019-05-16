@@ -218,5 +218,24 @@ class Academics{
             marks[i][col] = rank;
             rank = rank + 1;
         }
-    }    
+    }
+
+    public void showresults(){
+        for(int i = 0; i < n; i++){
+            System.out.println("==============================================================");
+            System.out.println("Student's Name: " + info[i][1]);
+            System.out.println("Roll Number: " + info[i][0] + "\t" + " Class: " + std + " " + sec);
+            System.out.println("Computer Code: " + info[i][2] + " Cass teacher: " + teacher);
+            System.out.println("Academic Year: " + academicyr);
+            System.out.println("==============================================================");
+            System.out.printf("| %18s | %18s | %18s |", "Subjects:", "First Term: ", "Second Term: ");
+            System.out.println();
+            System.out.println("--------------------------------------------------------------");
+
+            for (int j = 0;j < subjects.length; j++) {
+                System.out.printf("| %18s | %18s | %18s |", subjects[j], firstterm[i][j], secondterm[i][j]);
+                System.out.println();
+            }
+        }
+    }
 }
