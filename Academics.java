@@ -12,7 +12,7 @@ class Academics{
     float [][] cum;
     String [] subjects = {"Eng. Literature", "Eng. Language", "English",
                         "Hindi", "Maths", "History & Civics", "Geography", "social Studies",
-                        "Physics", "Chemistry", "Biology", "science", "Computer"};
+                        "Physics", "Chemistry", "Biology", "science", "Computer", "Total", "Percentage"};
     Scanner in = new Scanner(System.in);
 
     public void input(){
@@ -223,19 +223,25 @@ class Academics{
     public void showresults(){
         for(int i = 0; i < n; i++){
             System.out.println("==============================================================");
-            System.out.println("Student's Name: " + info[i][1]);
-            System.out.println("Roll Number: " + info[i][0] + "\t" + " Class: " + std + " " + sec);
-            System.out.println("Computer Code: " + info[i][2] + " Cass teacher: " + teacher);
-            System.out.println("Academic Year: " + academicyr);
+            System.out.println("|               Student's Name: " + info[i][1] + "            |");
+            System.out.println("| Roll Number: " + info[i][0] + "\t" + " Class: " + std + " " + sec + "         |");
+            System.out.printf("| %18s | %14s | %14s |", "Computer Code:", "Class Teacher:", "Academic Yr:");
+            System.out.println();
+            System.out.printf("| %18s | %14s | %14s |", info[i][2], teacher, academicyr);
+            System.out.println();
             System.out.println("==============================================================");
-            System.out.printf("| %18s | %18s | %18s |", "Subjects:", "First Term: ", "Second Term: ");
+            System.out.printf("| %18s | %14s | %14s |", "Subjects:", "First Term: ", "Second Term: ");
             System.out.println();
             System.out.println("--------------------------------------------------------------");
 
             for (int j = 0;j < subjects.length; j++) {
-                System.out.printf("| %18s | %18s | %18s |", subjects[j], firstterm[i][j], secondterm[i][j]);
+                System.out.printf("| %18s | %14s | %14s |", subjects[j], firstterm[i][j], secondterm[i][j]);
                 System.out.println();
+                if (j == 12){
+                    System.out.println("|--------------------------------------------------------------|");
+                }
             }
+            System.out.println("|--------------------------------------------------------------|");
         }
     }
 }
