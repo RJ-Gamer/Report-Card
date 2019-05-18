@@ -40,7 +40,6 @@ class Academics{
 
         System.out.println("Enter Your Section :");
         sec = in.nextLine().charAt(0);
-        // System.out.println(sec);
 
         System.out.println("Enter Your Class Teacher's Name :");
         teacher = in.nextLine();
@@ -84,13 +83,13 @@ class Academics{
             firstterm[i][1] = getmarks();
 
             firstterm[i][2] = Math.round((firstterm[i][0] + firstterm[i][1]) / 2);
-            float english = firstterm[i][2];
+            float english_t1 = firstterm[i][2];
 
             System.out.println("Enter Math For Hindi :");
-            float hindi = firstterm[i][3] = getmarks();
+            float hindi_t1 = firstterm[i][3] = getmarks();
 
             System.out.println("Enter Marks For Maths :");
-            float maths = firstterm[i][4] = getmarks();
+            float maths_t1 = firstterm[i][4] = getmarks();
 
             System.out.println("Enter Marks For History & Civics :");
             firstterm[i][5] = getmarks();
@@ -99,7 +98,7 @@ class Academics{
             firstterm[i][6] = getmarks();
 
             firstterm[i][7] = Math.round((firstterm[i][5] + firstterm[i][6]) / 2);
-            float social_science = firstterm[i][7];
+            float social_science_t1 = firstterm[i][7];
 
             System.out.println("Enter Marks For Physics :");
             firstterm[i][8] = getmarks();
@@ -111,12 +110,12 @@ class Academics{
             firstterm[i][10] = getmarks();
 
             firstterm[i][11] = Math.round((firstterm[i][8] + firstterm[i][9] + firstterm[i][10]) / 3);
-            float science = firstterm[i][11];
+            float science_t1 = firstterm[i][11];
 
             System.out.println("Enter Marks For Computer / P. Ed. :");
-            float comp_ped = firstterm[i][12] = getmarks();
+            float comp_ped_t1 = firstterm[i][12] = getmarks();
 
-            float total = Math.round(english + hindi + maths + social_science + science + comp_ped);
+            float total = Math.round(english_t1 + hindi_t1 + maths_t1 + social_science_t1 + science_t1 + comp_ped_t1);
             firstterm[i][13] = total;
 
             firstterm[i][14] = total / 6;
@@ -137,13 +136,13 @@ class Academics{
             secondterm[i][1] = getmarks();
 
             secondterm[i][2] = Math.round((secondterm[i][0] + secondterm[i][1]) / 2);
-            float english = secondterm[i][2];
+            float english_t2 = secondterm[i][2];
 
             System.out.println("Enter Math For Hindi :");
-            float hindi = secondterm[i][3] = getmarks();
+            float hindi_t2 = secondterm[i][3] = getmarks();
 
             System.out.println("Enter Marks For Maths :");
-            float maths = secondterm[i][4] = getmarks();
+            float maths_t2 = secondterm[i][4] = getmarks();
 
             System.out.println("Enter Marks For History & Civics :");
             secondterm[i][5] = getmarks();
@@ -152,7 +151,7 @@ class Academics{
             secondterm[i][6] = getmarks();
 
             secondterm[i][7] = Math.round((secondterm[i][5] + secondterm[i][6]) / 2);
-            float social_science = secondterm[i][7];
+            float social_science_t2 = secondterm[i][7];
 
             System.out.println("Enter Marks For Physics :");
             secondterm[i][8] = getmarks();
@@ -164,12 +163,12 @@ class Academics{
             secondterm[i][10] = getmarks();
 
             secondterm[i][11] = Math.round((secondterm[i][8] + secondterm[i][9] + secondterm[i][10]) / 3);
-            float science = secondterm[i][11];
+            float science_t2 = secondterm[i][11];
 
             System.out.println("Enter Marks For Computer / P. Ed. :");
-            float comp_ped = secondterm[i][12] = getmarks();
+            float comp_ped_t2 = secondterm[i][12] = getmarks();
 
-            float total = Math.round(english + hindi + maths + social_science + science + comp_ped);
+            float total = Math.round(english_t2 + hindi_t2 + maths_t2 + social_science_t2 + science_t2 + comp_ped_t2);
             secondterm[i][13] = total;
 
             secondterm[i][14] = total / 6;
@@ -225,27 +224,33 @@ class Academics{
 
     public void showresults(){
         for(int i = 0; i < n; i++){
-            System.out.println("==============================================================");
+            System.out.println("===============================================================================================");
             System.out.println("               Student's Name: " + info[i][1] + "            ");
-            System.out.println("==============================================================");
-            System.out.println("     Roll Number:       " + info[i][0] + "      Class :          " + std + " " + sec);
+            System.out.println("===============================================================================================");
+            System.out.println("     Roll Number:       " + info[i][0] + "   Class :      " + std + " " + sec);
             System.out.printf(" %18s  %14s  %14s ", "Computer Code:", "Class Teacher:", "Academic Yr:");
             System.out.println();
             System.out.printf(" %18s  %14s  %14s ", info[i][2], teacher, academicyr);
             System.out.println();
-            System.out.println("==============================================================");
-            System.out.printf(" %18s  %14s  %14s ", "Subjects:", "First Term: ", "Second Term: ");
+            System.out.println("===============================================================================================");
+            System.out.printf(" %18s  %14s  %14s %18s", "Subjects:", "First Term: ", "Second Term: ", "Final Result :");
             System.out.println();
-            System.out.println("--------------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------------------------------------");
 
+            int cum_count = -1;
             for (int j = 0;j < subjects.length; j++) {
-                System.out.printf(" %18s  %14s  %14s ", subjects[j], firstterm[i][j], secondterm[i][j]);
-                System.out.println();
-                if (j == 12){
-                    System.out.println("--------------------------------------------------------------");
+                if (j == 2 || j == 3 || j == 4 || j == 7 || j == 11 || j ==12 || j == 13 || j == 14 || j == 15){
+                    cum_count += 1;
+                    System.out.printf(" %18s  %14s  %14s %18s ", subjects[j], firstterm[i][j], secondterm[i][j], cum[i][cum_count]);
+                    System.out.println();
+                    System.out.println("-----------------------------------------------------------------------------------------------");
+                }
+                else{
+                    System.out.printf(" %18s  %14s  %14s %18s ", subjects[j], firstterm[i][j], secondterm[i][j], " ");
+                    System.out.println();
                 }
             }
-            System.out.println("--------------------------------------------------------------");
+            System.out.println("===============================================================================================");
         }
     }
 }
