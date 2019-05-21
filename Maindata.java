@@ -70,19 +70,19 @@ class Maindata{
 
     public void showinfo(){
 
-        System.out.println("================================================================");
+        System.out.println("==========================================================================================");
         System.out.println("Class Teacher : " + teacher);
         System.out.println("Academic Year : " + academicyr);
         System.out.println("Class : " + std + " " + sec);
-        System.out.println("================================================================");
-        System.out.printf("%10s %25s %15s", " Roll Number:", " Student's Name:", " Computer Code:");
+        System.out.println("===========================================================================================");
+        System.out.printf("%10s %25s %15s ", " Roll Number:", " Student's Name:", " Computer Code:");
         System.out.println();
-        System.out.println("================================================================");
+        System.out.println("===========================================================================================");
         for (int i = 0; i < info.length; i++) {
             System.out.printf("%10s %25s %15s", info[i][0], info[i][1], info[i][2]);
             System.out.println();
         }
-        System.out.println("================================================================");
+        System.out.println("===========================================================================================");
     }
 
     public float getmarks(){
@@ -99,7 +99,7 @@ class Maindata{
 
         for (int i = 0; i < firstterm.length; i++) {
             System.out.println("================================================================");
-            System.out.println("Enter First Term Marks For : " + info[i][1]);
+            System.out.println("Enter First Term Marks For : [" +info[i][2] + "]" + info[i][1]);
             System.out.println("================================================================");
 
             System.out.println("Enter First Term Marks For : " + subjects[0]);
@@ -163,7 +163,7 @@ class Maindata{
 
         for (int i = 0; i < secondterm.length; i++) {
             System.out.println("================================================================");
-            System.out.println("Enter Second Term Marks For : " + info[i][1]);
+            System.out.println("Enter Second Term Marks For : [" + info[i][2] + "]" + info[i][1]);
             System.out.println("================================================================");
 
             System.out.println("Enter Second Term Marks For : " + subjects[0]);
@@ -247,28 +247,7 @@ class Maindata{
             System.out.println();
         }
     }
-
-    public void sortbypercent(float[][] marks, int col, int rankcol){
-        for (int i = 0; i < marks.length; i++) {
-            for (int j = 0; j < (marks.length-i)-1; j++) {
-                int rank = 1;
-                if(marks[j][col] < marks[j+1][col]){
-                    float temp = rank;
-                    marks[j][rankcol] = rank+1;
-                    marks[j+1][rankcol] = temp;
-                }
-            }
-        }
-    }
-
-    // public void assignrank(float[][] marks, int col){
-    //     int rank = 1;
-    //     for (int i = 0; i < marks.length; i++) {
-    //         marks[i][col] = rank;
-    //         rank += 1;
-    //     }
-    // }
-
+    
     public void showresults(){
         for(int i = 0; i < n; i++){
             System.out.println("===============================================================================================");
