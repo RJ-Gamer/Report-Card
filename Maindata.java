@@ -154,7 +154,7 @@ class Maindata{
 
             firstterm[i][15] = 1;
 
-            firstterm[i][16] = Float.valueOf(info[i][2]);
+            firstterm[i][16] = Float.valueOf(info[i][0]);
         }
     }
 
@@ -218,10 +218,28 @@ class Maindata{
 
             secondterm[i][15] = 1;
 
-            secondterm[i][16] = Float.valueOf(info[i][2]);
+            secondterm[i][16] = Float.valueOf(info[i][0]);
         }
     }
 
+    public void sortbycol(float[][] marks, int col){
+        for(int i = 0; i < marks.length; i++){
+            for(int j = 1; j < marks.length; j++){
+                if(marks[j - 1][col] < marks[j][col]){
+                    float[] temp = marks[j-1];
+                    marks[j-1] = marks[j];
+                    marks[j] = temp;
+                }
+            }
+        }
+    }
+    public void assignrank(float[][] marks, int col){
+        int rank = 1;
+        for(int i = 0; i < marks.length; i++){
+            marks[i][col] = rank;
+            rank += 1;
+        }
+    }
     public void cummulative(){
         cum = new float[n][10];
         for (int i = 0; i < cum.length; i++) {
@@ -234,7 +252,7 @@ class Maindata{
             cum[i][6] = cum[i][0] + cum[i][1] + cum[i][2] + cum[i][3] + cum[i][4] + cum[i][5];
             cum[i][7] = Math.round(cum[i][6]/6);
             cum[i][8] = 1;
-            cum[i][9] = Float.valueOf(info[i][2]);
+            cum[i][9] = Float.valueOf(info[i][0]);
         }
     }
 
@@ -247,7 +265,7 @@ class Maindata{
             System.out.println();
         }
     }
-    
+
     public void showresults(){
         for(int i = 0; i < n; i++){
             System.out.println("===============================================================================================");
