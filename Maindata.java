@@ -26,8 +26,7 @@ class Maindata{
         " Computer/P. Ed.",
         " Total",
         " Percentage",
-        " Rank",
-        " Roll Number"
+        " Rank"
     };
     Scanner in = new Scanner(System.in);
 
@@ -95,7 +94,7 @@ class Maindata{
     }
 
     public void termone(){
-        firstterm = new float[n][17];
+        firstterm = new float[n][16];
 
         for (int i = 0; i < firstterm.length; i++) {
             System.out.println("================================================================");
@@ -152,14 +151,13 @@ class Maindata{
 
             firstterm[i][14] = total / 6;
 
-            firstterm[i][15] = 1;
+            firstterm[i][15] = 0;
 
-            firstterm[i][16] = Float.valueOf(info[i][0]);
         }
     }
 
     public void termtwo(){
-        secondterm = new float[n][17];
+        secondterm = new float[n][16];
 
         for (int i = 0; i < secondterm.length; i++) {
             System.out.println("================================================================");
@@ -216,32 +214,12 @@ class Maindata{
 
             secondterm[i][14] = total / 6;
 
-            secondterm[i][15] = 1;
+            secondterm[i][15] = 0;
 
-            secondterm[i][16] = Float.valueOf(info[i][0]);
-        }
-    }
-
-    public void sortbycol(float[][] marks, int col){
-        for(int i = 0; i < marks.length; i++){
-            for(int j = 1; j < marks.length; j++){
-                if(marks[j - 1][col] < marks[j][col]){
-                    float[] temp = marks[j-1];
-                    marks[j-1] = marks[j];
-                    marks[j] = temp;
-                }
-            }
-        }
-    }
-    public void assignrank(float[][] marks, int col){
-        int rank = 1;
-        for(int i = 0; i < marks.length; i++){
-            marks[i][col] = rank;
-            rank += 1;
         }
     }
     public void cummulative(){
-        cum = new float[n][10];
+        cum = new float[n][9];
         for (int i = 0; i < cum.length; i++) {
             cum[i][0] = Math.round((firstterm[i][2] + secondterm[i][2])/2);
             cum[i][1] = Math.round((firstterm[i][3] + secondterm[i][3])/2);
@@ -251,8 +229,7 @@ class Maindata{
             cum[i][5] = Math.round((firstterm[i][12] + secondterm[i][12])/2);
             cum[i][6] = cum[i][0] + cum[i][1] + cum[i][2] + cum[i][3] + cum[i][4] + cum[i][5];
             cum[i][7] = Math.round(cum[i][6]/6);
-            cum[i][8] = 1;
-            cum[i][9] = Float.valueOf(info[i][0]);
+            cum[i][8] = 0;
         }
     }
 
@@ -280,7 +257,6 @@ class Maindata{
             System.out.printf(" %20s  %14s  %14s %18s", "Subjects:", "First Term: ", "Second Term: ", "Final Result :");
             System.out.println();
             System.out.println("-----------------------------------------------------------------------------------------------");
-
             int cum_count = -1;
             for (int j = 0;j < subjects.length; j++) {
                 if (j == 2 || j == 3 || j == 4 || j == 7 || j == 11 || j ==12 || j == 13 || j == 14 || j == 15){
@@ -288,6 +264,7 @@ class Maindata{
                     System.out.printf(" %20s  %14s  %14s %18s ", subjects[j], firstterm[i][j], secondterm[i][j], cum[i][cum_count]);
                     System.out.println();
                     System.out.println("-----------------------------------------------------------------------------------------------");
+
                 }
                 else{
                     System.out.printf(" %20s  %14s  %14s %18s ", subjects[j], firstterm[i][j], secondterm[i][j], " ");
@@ -295,6 +272,45 @@ class Maindata{
                 }
             }
             System.out.println("===============================================================================================");
+        }
+    }
+
+    public void ranksort(float[][] marks, int avg_col, int rank_col){
+        int i;
+        float [][] sortedpercentage = new float[marks.length][2];
+
+        for(int j = 0; j < marks.length; j++){
+            for(i = (marks.length-1); i >= 0; i--){
+                if(marks[j][avg_col] > sortedpercentage[i][1]){
+                    if (i == marks.length - 1){
+                        sortedpercentage[i][0] = Integer.valueOf(info[j][0]);
+                        sortedpercentage[i][1] = marks[j][avg_col];
+                    }
+                    else{
+                        float temp_roll = sortedpercentage[i][0];
+                        float temp_perc = sortedpercentage[i][1];
+
+                        sortedpercentage[i][0] = Integer.valueOf(info[j][0]);
+                        sortedpercentage[i][1] = marks[j][avg_col];
+
+                        sortedpercentage[i + 1][0] = temp_roll;
+                        sortedpercentage[i + 1][1] = temp_perc;
+                    }
+                }
+            }
+        }
+        // for(int x = 0; x < sortedpercentage.length; x++){
+        //         System.out.println("Roll No.: " +sortedpercentage[x][0]);
+        //         System.out.println("Marks : " +sortedpercentage[x][1]);
+        // }
+        int rank = 1;
+        for (int y = 0; y < sortedpercentage.length; y++){
+            for(int z = 0; z < marks.length; z++){
+                if(sortedpercentage[y][0] == Float.valueOf(info[z][0])){
+                    marks[z][rank_col] = rank;
+                    rank += 1;
+                }
+            }
         }
     }
 }
