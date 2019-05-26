@@ -1,6 +1,14 @@
 import java.util.Scanner;
-
-class Maindata{
+/**
+* <h1>Academics</h1>
+* The Academics program implements an application that
+* simply ask for students details and marks of different subjects
+* and print the results based on marks entered
+* @author  Rajat Jog
+* @version 1.0
+* @since   2019-04-19
+*/
+public class Academics{
     int n;
     int std;
     char sec;
@@ -29,11 +37,30 @@ class Maindata{
         " Rank"
     };
     Scanner in = new Scanner(System.in);
-    public static boolean isStringOnlyAlphabet(String str) {
+    /**
+     * This method checks whether str has
+     * only alphabets including spaces
+     * @param  str This is passed to function to check if it has only
+     * alphabets and spaces
+     * @return 1 if true otherwise 0
+     */
+    public boolean isStringOnlyAlphabet(String str) {
         return ((str != null
         && (!str.equals(""))
         && (str.matches("^[ a-zA-Z]+$"))));
     }
+    /**
+     * Asks for :
+     * n = Number of Students
+     * info[n][3] : String array
+     * info[i][0] : Roll Number : Auto increamented
+     * info[i][1] : Student's name
+     * info[i][2] : 6 digit Computer code
+     * std : Standard
+     * sec : Section
+     * teacher : Teacher's name
+     * academicyr : Academic year
+     */
 
     public void input(){
         // Get Number of students
@@ -83,7 +110,9 @@ class Maindata{
         System.out.println("Enter Academic Year : Ex. 2019-2020");
         academicyr = in.nextLine();
     }
-
+    /**
+     * show data info[n]p3 and details of the class
+     */
     public void showinfo(){
 
         System.out.println("==========================================================================================");
@@ -101,6 +130,10 @@ class Maindata{
         System.out.println("===========================================================================================");
     }
 
+    /**
+     * The function checks if entered marks are between 0 and 100
+     * @return marks if marks are netween 0 and 100
+     */
     public float getmarks(){
         float marks = in.nextInt();
         if (!((marks >= 0) && (marks <= 100))){
@@ -109,7 +142,12 @@ class Maindata{
         }
         return marks;
     }
-
+    /**
+     * Asks marks for first term.
+     * Calculates total of 6 subjects
+     * Calculates average
+     * Stores Rank
+     */
     public void termone(){
         firstterm = new float[n][16];
 
@@ -172,7 +210,12 @@ class Maindata{
 
         }
     }
-
+    /**
+     * Asks marks for second term.
+     * Calculates total of 6 subjects
+     * Calculates average
+     * Stores Rank
+     */
     public void termtwo(){
         secondterm = new float[n][16];
 
@@ -235,6 +278,12 @@ class Maindata{
 
         }
     }
+    /**
+     * Calculates average of 6 first and second term's six subjects
+     * Calculates total
+     * Calculates average
+     * Stores Rank
+     */
     public void cummulative(){
         cum = new float[n][9];
         for (int i = 0; i < cum.length; i++) {
@@ -250,6 +299,10 @@ class Maindata{
         }
     }
 
+    /**
+     * Displays the given term's marks for all [n] students
+     * @param term whether it's firstterm, secondterm or cummulative?
+     */
     public void showtermmarks(float[][] term){
         for(int i = 0; i < term.length; i++){
             System.out.println("Showing Marks For :" + info[i][1]);
@@ -259,7 +312,9 @@ class Maindata{
             System.out.println();
         }
     }
-
+    /**
+     * Display results of all [n] students
+     */
     public void showresults(){
         for(int i = 0; i < n; i++){
             System.out.println("===============================================================================================");
@@ -291,7 +346,14 @@ class Maindata{
             System.out.println("===============================================================================================");
         }
     }
-
+    /**
+     * 1. Takes marks of perticular term
+     * 2. Calculates Rank based on percentage
+     * 3. Assigns rank to each student
+     * @param marks    firstterm, secondterm or cummulative
+     * @param avg_col  column in which average is stored
+     * @param rank_col column in which rank is to be stored
+     */
     public void ranksort(float[][] marks, int avg_col, int rank_col){
         int i;
         float [][] sortedpercentage = new float[marks.length][2];

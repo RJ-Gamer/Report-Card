@@ -1,6 +1,6 @@
-class Execute{
+public class Object{
     public static void main(String[] args) {
-        Maindata obj = new Maindata();
+        Academics obj = new Academics();
         obj.input();
         obj.showinfo();
 
