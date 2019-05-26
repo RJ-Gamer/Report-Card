@@ -32,7 +32,7 @@ class Maindata{
     public static boolean isStringOnlyAlphabet(String str) {
         return ((str != null
         && (!str.equals(""))
-        && (str.matches("^[a-zA-Z]*$"))));
+        && (str.matches("^[ a-zA-Z]+$"))));
     }
 
     public void input(){
@@ -48,19 +48,12 @@ class Maindata{
         for (int i = 0;i < info.length; i++) {
             info[i][0] = Integer.toString(i + 1);
 
-            System.out.println("Enter Student's First Name :");
-            String firstname = in.nextLine();
-            while (isStringOnlyAlphabet(firstname) == false){
-                System.out.println("Invalid First Name, try again");
-                firstname = in.nextLine();
+            System.out.println("Enter Student's Name :");
+            info[i][1] = in.nextLine();
+            while (isStringOnlyAlphabet(info[i][1]) == false){
+                System.out.println("Invalid Stuent's Name, try again");
+                info[i][1] = in.nextLine();
             }
-            System.out.println("Enter Student's Last Name :");
-            String lastname = in.nextLine();
-            while(isStringOnlyAlphabet(lastname) == false){
-                System.out.println("Invalid Last name, try again :");
-                lastname = in.nextLine();
-            }
-            info[i][1] = firstname + " " + lastname;
 
             System.out.println("Enter Six Digit Computer Code :");
             info[i][2] = in.nextLine();
@@ -82,6 +75,10 @@ class Maindata{
 
         System.out.println("Enter Your Class Teacher's Name :");
         teacher = in.nextLine();
+        while(isStringOnlyAlphabet(teacher)){
+            System.out.println("Invalid name of teacher, try again");
+            teacher = in.nextLine();
+        }
 
         System.out.println("Enter Academic Year : Ex. 2019-2020");
         academicyr = in.nextLine();
