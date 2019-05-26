@@ -29,6 +29,11 @@ class Maindata{
         " Rank"
     };
     Scanner in = new Scanner(System.in);
+    public static boolean isStringOnlyAlphabet(String str) {
+        return ((str != null
+        && (!str.equals(""))
+        && (str.matches("^[a-zA-Z]*$"))));
+    }
 
     public void input(){
         // Get Number of students
@@ -43,13 +48,28 @@ class Maindata{
         for (int i = 0;i < info.length; i++) {
             info[i][0] = Integer.toString(i + 1);
 
-            System.out.println("Enter Student's Name :");
-            info[i][1] = in.nextLine();
+            System.out.println("Enter Student's First Name :");
+            String firstname = in.nextLine();
+            while (isStringOnlyAlphabet(firstname) == false){
+                System.out.println("Invalid First Name, try again");
+                firstname = in.nextLine();
+            }
+            System.out.println("Enter Student's Last Name :");
+            String lastname = in.nextLine();
+            while(isStringOnlyAlphabet(lastname) == false){
+                System.out.println("Invalid Last name, try again :");
+                lastname = in.nextLine();
+            }
+            info[i][1] = firstname + " " + lastname;
 
             System.out.println("Enter Six Digit Computer Code :");
             info[i][2] = in.nextLine();
-            if(info[i][2].length() != 6) {
-                System.out.println("Computer Code Must Be Six Digits Number, Try Again :");
+            while(info[i][2].length() != 6){
+                System.out.println("Computer must be six digits, try again");
+                info[i][2] = in.nextLine();
+            }
+            while(info[i][2].matches("^[0-9]*$") == false){
+                System.out.println("Computer code must contain only digits : try again");
                 info[i][2] = in.nextLine();
             }
         }
@@ -246,7 +266,7 @@ class Maindata{
     public void showresults(){
         for(int i = 0; i < n; i++){
             System.out.println("===============================================================================================");
-            System.out.println("               Student's Name: " + info[i][1] + "            ");
+            System.out.println("                    Student's Name: " + info[i][1] + "            ");
             System.out.println("===============================================================================================");
             System.out.println("     Roll Number:       " + info[i][0] + "   Class :      " + std + " " + sec);
             System.out.printf(" %18s  %14s  %14s ", "Computer Code:", "Class Teacher:", "Academic Yr:");
@@ -299,10 +319,6 @@ class Maindata{
                 }
             }
         }
-        // for(int x = 0; x < sortedpercentage.length; x++){
-        //         System.out.println("Roll No.: " +sortedpercentage[x][0]);
-        //         System.out.println("Marks : " +sortedpercentage[x][1]);
-        // }
         int rank = 1;
         for (int y = 0; y < sortedpercentage.length; y++){
             for(int z = 0; z < marks.length; z++){
